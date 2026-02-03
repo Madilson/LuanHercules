@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   description: "Site institucional premium para o tatuador Luan Hércules, com foco em exclusividade e realismo.",
 };
 
+// Use standard property typing with optional children to avoid strict Readonly requirement errors
 export default function RootLayout({
   children,
 }: {
-  // Use React.ReactNode to define the type for children
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   return (
     <html lang="pt-BR">

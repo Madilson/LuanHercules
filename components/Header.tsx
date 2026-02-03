@@ -9,7 +9,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  
+  // No Next.js isso funciona nativamente. Na prévia, pegamos do window.
+  let pathname = '/';
+  try {
+    pathname = usePathname() || window.location.pathname;
+  } catch (e) {
+    if (typeof window !== 'undefined') pathname = window.location.pathname;
+  }
 
   useEffect(() => {
     const handleScroll = () => {

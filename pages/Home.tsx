@@ -1,16 +1,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import GoldButton from '../components/GoldButton';
 
 const Home: React.FC = () => {
   return (
     <div className="relative overflow-hidden">
-      {/* Background Texture Overlay */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/black-paper.png")' }}></div>
 
-      {/* Hero Section */}
       <section className="relative min-h-[95vh] flex flex-col items-center justify-center text-center px-6 pt-12">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -27,7 +25,6 @@ const Home: React.FC = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="flex flex-col items-center"
         >
-          {/* Main Hero Logo */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -54,10 +51,10 @@ const Home: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/portfolio">
+            <Link href="/portfolio">
               <GoldButton>Explorar Portfólio</GoldButton>
             </Link>
-            <Link to="/contato">
+            <Link href="/contato">
               <button className="px-8 py-3 border border-gray-700 text-white uppercase tracking-widest hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all bg-black/50 backdrop-blur-sm">
                 Agendar Consulta
               </button>
@@ -65,7 +62,6 @@ const Home: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -76,9 +72,7 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Featured Philosophy Section */}
       <section className="py-24 bg-[#050505] relative overflow-hidden">
-        {/* Subtle background lion watermark */}
         <div className="absolute right-[-10%] bottom-[-10%] opacity-[0.03] pointer-events-none scale-150">
            <img src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/tattoo-logo-placeholder.png" alt="Watermark" className="w-[600px] h-[600px] object-contain" />
         </div>
@@ -112,7 +106,7 @@ const Home: React.FC = () => {
             <p className="text-gray-400 mb-6 leading-relaxed text-lg font-light">
               Cada agulhada é um compromisso com a excelência. Em meu estúdio, não apenas tatuamos; eternizamos legados. Minha técnica funde o clássico com o contemporâneo, garantindo que sua arte envelheça com a mesma dignidade que foi criada.
             </p>
-            <Link to="/sobre" className="inline-block text-[#D4AF37] tracking-[0.2em] uppercase text-sm border-b border-[#D4AF37] pb-1 hover:text-white hover:border-white transition-all">
+            <Link href="/sobre" className="inline-block text-[#D4AF37] tracking-[0.2em] uppercase text-sm border-b border-[#D4AF37] pb-1 hover:text-white hover:border-white transition-all">
               Conheça a História
             </Link>
           </motion.div>

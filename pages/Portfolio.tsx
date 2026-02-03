@@ -7,7 +7,7 @@ const portfolioItems = [
   { id: 2, url: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80&w=600', title: 'Grey Wash Soul', category: 'Sombreado' },
   { id: 3, url: 'https://images.unsplash.com/photo-1590201841344-38f176c5b057?auto=format&fit=crop&q=80&w=600', title: 'Geometric Order', category: 'Geométrico' },
   { id: 4, url: 'https://images.unsplash.com/photo-1560707303-4e980ce876ad?auto=format&fit=crop&q=80&w=600', title: 'Dark Surrealism', category: 'Surrealismo' },
-  { id: 5, url: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&q=80&w=600', title: 'Lion Heart', category: 'Realismo' },
+  { id: 5, url: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&q=80&w=800', title: 'Lion Heart', category: 'Realismo' },
   { id: 6, url: 'https://images.unsplash.com/photo-1542332606-b4dce867966b?auto=format&fit=crop&q=80&w=600', title: 'Ancient Symbols', category: 'Trabalho Fino' },
 ];
 
@@ -45,7 +45,6 @@ const Portfolio: React.FC = () => {
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             key={item.id}
             className="group relative h-[450px] overflow-hidden cursor-pointer"
           >

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -7,7 +6,12 @@ import SplashScreen from './SplashScreen';
 import Header from './Header';
 import Footer from './Footer';
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+// Define the component props with children as optional to avoid strict typing issues in different environments
+export default function ClientLayout({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
