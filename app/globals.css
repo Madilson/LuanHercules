@@ -1,0 +1,46 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-primary: #BF953F;
+  --gold-secondary: #FCF6BA;
+  --gold-tertiary: #B38728;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+}
+
+.font-serif-imperial {
+  font-family: 'Cinzel', serif;
+}
+
+.gold-glow:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #B38728;
+  border-radius: 4px;
+}

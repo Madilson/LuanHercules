@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-black border-t border-white/5 py-16">
       <div className="container mx-auto px-6 flex flex-col items-center">
-        <Link to="/" className="flex flex-col items-center group mb-12">
+        <Link href="/" className="flex flex-col items-center group mb-12">
           <div className="w-20 h-20 mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
             <img 
               src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/tattoo-logo-placeholder.png" 
@@ -40,18 +40,8 @@ const Footer: React.FC = () => {
           >
             WhatsApp
           </a>
-          <a 
-            href="#" 
-            className="text-gray-500 hover:text-[#D4AF37] transition-colors uppercase tracking-[0.2em] text-xs"
-          >
-            Behance
-          </a>
-          <a 
-            href="mailto:luanherculestattoo@gmail.com" 
-            className="text-gray-500 hover:text-[#D4AF37] transition-colors uppercase tracking-[0.2em] text-xs"
-          >
-            Email
-          </a>
+          <a href="#" className="text-gray-500 hover:text-[#D4AF37] transition-colors uppercase tracking-[0.2em] text-xs">Behance</a>
+          <a href="mailto:luanherculestattoo@gmail.com" className="text-gray-500 hover:text-[#D4AF37] transition-colors uppercase tracking-[0.2em] text-xs">Email</a>
         </div>
 
         <div className="text-center">
