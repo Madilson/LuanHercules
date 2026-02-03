@@ -1,0 +1,7 @@
+{
+  "name": "Luan Hércules Tattoo - Arte & Honra",
+  "description": "Site institucional premium para o tatuador Luan Hércules, com foco em exclusividade, elegância e alta performance.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
