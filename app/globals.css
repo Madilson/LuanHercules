@@ -4,43 +4,85 @@
 @tailwind utilities;
 
 :root {
-  --gold-primary: #BF953F;
-  --gold-secondary: #FCF6BA;
-  --gold-tertiary: #B38728;
+  /* Tons extraídos da referência do brasão enviado */
+  --gold-primary: #D4AF37;
+  --gold-secondary: #F5E0A3;
+  --gold-tertiary: #8B6B23;
 }
 
-body {
-  background-color: #000000;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+@layer base {
+  body {
+    @apply bg-black text-white selection:bg-[#D4AF37] selection:text-black;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-serif-imperial {
+    font-family: 'Cinzel', serif;
+    @apply tracking-widest uppercase;
+  }
 }
 
+/* Efeito de Textura de Luxo */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.05;
+  z-index: 50;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Gradiente de Ouro Realista (Inspirado no Brasão LHT) */
 .text-gold-gradient {
-  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  background: linear-gradient(
+    to right,
+    #8B6B23 0%,
+    #D4AF37 25%,
+    #F5E0A3 50%,
+    #D4AF37 75%,
+    #8B6B23 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 6s linear infinite;
 }
 
 .bg-gold-gradient {
-  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+  background: linear-gradient(to right, #8B6B23, #D4AF37, #F5E0A3, #D4AF37);
+  background-size: 200% auto;
 }
 
-.font-serif-imperial {
-  font-family: 'Cinzel', serif;
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
-.gold-glow:hover {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-}
-
+/* Scrollbar Customizada Dourada */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B38728;
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #8B6B23, #D4AF37);
+  border-radius: 10px;
+}
+
+.gold-glow {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gold-glow:hover {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+}
+
+.border-gold-subtle {
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }

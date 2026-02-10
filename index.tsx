@@ -1,59 +1,67 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import ClientLayout from './components/ClientLayout';
+import ClientLayout from './components/ClientLayout.tsx';
 
-// Importação das páginas do "App Router" para uso na pré-visualização
-import Home from './app/page';
-import Portfolio from './app/portfolio/page';
-import Estilos from './app/estilos/page';
-import Sobre from './app/sobre/page';
-import Contato from './app/contato/page';
+// Importações diretas para garantir funcionamento no preview
+import Home from './app/page.tsx';
+import Portfolio from './app/portfolio/page.tsx';
+import Estilos from './app/estilos/page.tsx';
+import Sobre from './app/sobre/page.tsx';
+import Contato from './app/contato/page.tsx';
+import Admin from './app/admin/page.tsx';
 
 const App = () => {
-  const [currentPath, setCurrentPath] = useState('/');
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-  // Simulação de roteamento para a pré-visualização
   useEffect(() => {
     const handleLocationChange = () => {
       setCurrentPath(window.location.pathname);
+      window.scrollTo(0, 0);
     };
 
     window.addEventListener('popstate', handleLocationChange);
     
-    // Pequeno hack para interceptar cliques em links do Next.js na prévia
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a');
-      if (anchor && anchor.href.startsWith(window.location.origin)) {
-        e.preventDefault();
-        const path = anchor.getAttribute('href') || '/';
-        window.history.pushState({}, '', path);
-        setCurrentPath(path);
+      
+      if (anchor && anchor.href && anchor.href.startsWith(window.location.origin)) {
+        const url = new URL(anchor.href);
+        const path = url.pathname;
+        
+        if (path !== window.location.pathname) {
+          e.preventDefault();
+          window.history.pushState({}, '', path);
+          handleLocationChange();
+        }
       }
     };
 
     document.addEventListener('click', handleClick);
+    
     return () => {
       window.removeEventListener('popstate', handleLocationChange);
       document.removeEventListener('click', handleClick);
     };
   }, []);
 
-  // Seleciona o componente baseado na rota
   const renderPage = () => {
     switch (currentPath) {
       case '/portfolio': return <Portfolio />;
       case '/estilos': return <Estilos />;
       case '/sobre': return <Sobre />;
       case '/contato': return <Contato />;
+      case '/admin': return <Admin />;
       default: return <Home />;
     }
   };
 
   return (
     <ClientLayout>
-      {renderPage()}
+      <Suspense fallback={<div className="min-h-screen bg-black" />}>
+        {renderPage()}
+      </Suspense>
     </ClientLayout>
   );
 };
