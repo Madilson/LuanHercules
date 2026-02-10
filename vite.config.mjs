@@ -1,5 +1,4 @@
 
-/** @type {import('vite').Config} */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -8,15 +7,20 @@ export default defineConfig({
   base: '/',
   build: {
     outDir: 'dist',
-    sourcemap: false,
+    emptyOutDir: true,
     minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
-      input: {
-        main: './index.html',
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion'],
+        },
       },
     },
   },
-  server: {
-    historyApiFallback: true,
-  }
 });
